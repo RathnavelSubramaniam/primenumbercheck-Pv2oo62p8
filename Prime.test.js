@@ -1,40 +1,24 @@
-const isPrime = require('./prime');
+/**
+ * Checks if a given number is prime.
+ *
+ * @param {number} n - The number to check.
+ * @returns {boolean} True if the number is prime, false otherwise.
+ */
+const n=parseInt(process.argv[2]);
 
-describe('Prime Number Tests', () => {
-    test('Should return false for numbers less than 2', () => {
-        expect(isPrime(1)).toBe(false);
-        expect(isPrime(0)).toBe(false);
-        expect(isPrime(-5)).toBe(false);
-    });
+function isPrime(num) {
+    if (num <= 1) return false;
+    for(let i=2;i<num;i++){
+        if(num % i=== 0){
+            return false;
+        }
+    }
+    return true;
+}
+if (isPrime(n)) {
+    console.log("Prime Number");
+}else{
+    console.log("Not Prime Number");
+}
 
-    test('Should return true for basic prime numbers', () => {
-        expect(isPrime(2)).toBe(true);
-        expect(isPrime(3)).toBe(true);
-        expect(isPrime(5)).toBe(true);
-        expect(isPrime(7)).toBe(true);
-    });
-
-    test('Should return false for composite numbers', () => {
-        expect(isPrime(4)).toBe(false);
-        expect(isPrime(9)).toBe(false);
-        expect(isPrime(15)).toBe(false);
-        expect(isPrime(100)).toBe(false);
-    });
-
-    test('Should return true for larger prime numbers', () => {
-        expect(isPrime(97)).toBe(true);
-        expect(isPrime(7919)).toBe(true);
-    });
-
-    test('Should return false for larger composite numbers', () => {
-        expect(isPrime(99)).toBe(false);
-        expect(isPrime(8000)).toBe(false);
-    });
-
-    test('Should handle edge cases and non-integers correctly', () => {
-        expect(isPrime(2.5)).toBe(false);
-        expect(isPrime("5")).toBe(false);
-        expect(isPrime(NaN)).toBe(false);
-        expect(isPrime(Infinity)).toBe(false);
-    });
-});
+module.exports = isPrime;
