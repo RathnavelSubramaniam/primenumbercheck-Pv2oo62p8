@@ -1,24 +1,26 @@
-/**
- * Checks if a given number is prime.
- *
- * @param {number} n - The number to check.
- * @returns {boolean} True if the number is prime, false otherwise.
- */
-const n=parseInt(process.argv[2]);
-
 function isPrime(num) {
-    if (num <= 1) return false;
-    for(let i=2;i<num;i++){
-        if(num % i=== 0){
+    if (num <= 1) {
+        return false;
+    }
+
+    for (let i = 2; i < num; i++) {
+        if (num % i === 0) {
             return false;
         }
     }
+
     return true;
 }
-if (isPrime(n)) {
-    console.log("Prime Number");
-}else{
-    console.log("Not Prime Number");
-}
 
-module.exports = isPrime;
+function checkPrime() {
+    const n = parseInt(document.getElementById("number").value);
+    const result = document.getElementById("result");
+
+    if (isNaN(n)) {
+        result.innerText = "Please enter a number";
+    } else if (isPrime(n)) {
+        result.innerText = "Prime Number";
+    } else {
+        result.innerText = "Not Prime Number";
+    }
+}
